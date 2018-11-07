@@ -1,0 +1,129 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.PostComment{
+    border-radius: 0.15em;
+    background-color: red;
+    animation-name: fadeIn;
+    animation-timing-function: ease;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    padding-bottom: 1.25em; // 얘랑 위에거랑 아예안주는거랑 고민중
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    div.comment{
+        display: flex;
+        .profileImg-container{
+            flex-shrink: 0;
+            margin-left: 0.25em;
+            margin-top: 0.2em;
+            padding: 0.25em;
+            width: 4em;
+            height: 4em;
+        }
+        .contents{
+            width: 1px;
+            flex-grow: 1;
+            flex-shrink: 1;
+            display: flex;
+            flex-direction: column;
+            div.authorAndDate{
+                display: flex;
+                flex-wrap: wrap;
+                display: flex;
+                align-items: center;
+                margin-top: 0.3em;
+                margin-left: 0.3em;
+                .author{
+                    color: #1F3050;
+                    font-size: 130%;
+                    font-weight: 900;
+                    padding: 0.3em 0;
+                    margin-right: 0.35em;
+                }
+                .date{
+                    overflow: hidden;
+                    text-overflow: ellipsis;                    
+                    color: #999;
+                    font-size: 100%;
+                    font-weight: 900;
+                }
+            }
+            .description{
+                word-wrap: break-word;
+                word-break: keep-all;
+                font-weight: 900;
+                padding: 0.4em;
+                line-height: 160%;
+                white-space: pre-line;
+            }
+            .btnWrite{
+                margin-top: 0.5em;
+                button{
+                    cursor: pointer;
+                    border-radius: 0.15em;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+                    color: white;
+                    font-size: 100%;
+                    font-weight: 900;
+                    padding: 0.45em;
+                    border: none;
+                    transition: background-color 0.15s ease;
+                }
+                button.reply{
+                    background-color: #2A416F;
+                    &:hover{
+                        background-color: #4285F4;
+                    }
+                    &:focus{
+                        outline: none;
+                    }                    
+                }
+                button.delete{
+                    background-color: red;
+                    &:hover{
+                        background-color: black;
+                    }
+                    &:focus{
+                        outline: none;
+                    }         
+                }
+            }
+        }
+    }
+
+    .form-container{
+        padding: 0 1.5em;
+        padding-top: 0.5em;
+    }
+
+    .replies-container{
+        padding-left: 4.5em;
+
+        // margin-left: 0.25em;
+        // margin-top: 0.2em;
+        // padding: 0.25em;
+        // width: 4em;
+        // height: 4em;
+        // margin: 1em 0;
+        // width: 85%;
+        // align-self: flex-end;
+    }
+}
+
+.PostComment.admin{
+    
+}
+
+.PostComment.reply{
+    padding-top: 0.5em;
+}

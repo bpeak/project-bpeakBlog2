@@ -1,0 +1,12 @@
+/node_modules/
+
+/dist/server.js
+
+/public/imgs/
+/public/client.js
+/public/app.css
+/public/postImgs/
+/public/temporary/
+/public/users/
+
+/src/server/configs/secret/secret.config.js

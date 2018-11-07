@@ -1,0 +1,271 @@
+.PostPage{
+    display: flex;
+    flex-direction: column;
+
+    font-size: 20.5px;
+
+    .spinner-container{
+        margin-top: 2em;
+    }
+
+    .postNull-container{
+        margin-top: 2em;
+        display: flex;
+        justify-content: center;
+        font-size: 130%;
+        font-weight: 900;
+        color: #0D1B49;
+    }
+}
+
+article.post{
+    width: 55%;
+    margin: 0 auto;
+    
+    div.authorAndDate{
+        margin-top: 1em;
+        display: flex;
+        align-items: center;
+        .ProfileImg-container { 
+            width: 3em; 
+            height: 3em;
+            margin-right: 0.7em; 
+        }
+        .nickAndDate{
+            display: flex;
+            flex-direction: column;
+            span.nick{
+                font-size: 110%;
+                font-weight: 700;
+                color: #003569;
+                cursor: pointer;
+                transition: color 0.15s ease;
+                &:hover{
+                    color: #FF5252;
+                }
+            }
+            span.date{
+                font-size: 80%;
+                font-weight: 700;
+                color: rgba(0,0,0,.54);
+            }
+        }
+        button.edit{
+            margin-left: 0.5em;
+            cursor: pointer;
+            border: none;
+            background: none;
+            background-color: #1E306E;
+            color: white;
+            font-weight: 900;
+            padding: 0.5em;
+            border-radius: 0.2em;
+            transition: background-color 0.2s ease;
+            &:hover{
+                background-color: black;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+        button.delete{
+            margin-left: 0.5em;
+            cursor: pointer;
+            border: none;
+            background: none;
+            background-color: red;
+            color: white;
+            font-weight: 900;
+            padding: 0.5em;
+            border-radius: 0.2em;
+            transition: background-color 0.2s ease;
+            &:hover{
+                background-color: black;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+    h1.title{
+        font-size: 200%;
+        font-weight: 900;
+        word-wrap: break-word;
+        word-break: keep-all;
+        line-height: 125%;
+        margin: 0.8em 0;
+    }
+
+    img.cover{
+        width: 100%;
+        height: 100%;
+    }
+
+    /* div.coverImg-container{
+    //     transition: height 0.15s ease;
+    //     img { width: 100%; height: 100%; border-radius: 0.2em; }
+    } */
+
+    div.intro{
+        word-wrap: break-word;
+        word-break: keep-all;
+        font-size: 100%;
+        line-height: 175%;
+        margin: 1em 0;
+        color: rgba(0,0,0,.84);
+    }
+
+    div.description{
+        // white-space: pre-line;
+        & > * {
+            color: rgba(0,0,0,.84);
+            font-size: 100%;
+            line-height: 175%;
+            margin-bottom: 1em;
+        }
+
+        img{
+            border-radius: 0.14em;
+            max-width: 100%;
+            height: auto;
+        }
+
+        li{
+            list-style-position: inside;
+        }
+
+        h2{
+            font-size: 160%;
+            font-weight: 900;
+        }
+
+        a{
+            color: #1a0dab;
+            font-weight: 600;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+        p{ 
+            
+        }
+
+        pre{
+            border-radius: 0.1em;
+            padding: 1em;
+            font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+            background-color: #F2F2F2;
+            overflow: auto;
+            color: #666;
+            font-weight: 400;
+        }
+    }
+
+    div.tags{
+        margin: 2em 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        button{
+            cursor: pointer;
+            border: none;
+            margin: 0.3em 0.4em;
+            font-size: 85%;
+            font-weight: 900;
+            color: white;
+            background-color:#3fb0ac;
+            border-radius: 0.3em;
+            padding: 0.5em;
+            box-shadow: 0 0 0.25em 0.06em rgba(0, 0, 0, 0.3);
+            transition: background-color 0.2s ease;
+            &:hover{
+                background-color: #173e43;
+            }
+            &:focus{
+                outline: none;
+            }
+        } 
+    }
+
+    div.comments{
+        font-size: 85%;
+    }
+}
+
+@media (min-width : 1900px){
+    .PostPage{
+        article.post{
+            width: 45%;
+        }
+    }
+}
+
+@media (min-width : 1440px) and (max-width : 1900px){
+    .PostPage{
+        article.post{
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width : 1280px){
+    .PostPage{
+        font-size: 19.5px;
+        article.post{
+            width: 70%;
+        }
+    }
+}
+
+@media (max-width : 1024px){
+    .PostPage{
+        font-size: 18.5px;
+        article.post{
+            width: 75%;
+        }
+    }
+}
+
+@media (max-width : 960px){
+    .PostPage{
+        font-size: 17.5px;
+        article.post{
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width : 768px){
+    .PostPage{
+        font-size: 16.5px;
+        article.post{
+            width: 85%;
+        }
+    }
+}
+
+@media (max-width : 600px){
+    .PostPage{
+        font-size: 15.5px;
+        article.post{
+            width: 90%;
+        }
+    }
+}
+
+@media (max-width : 480px){
+    .PostPage{
+        font-size: 14px;
+        article.post{
+            width: 95%;
+        }
+    }
+}
+
+@media (max-width : 320px){
+    .PostPage{
+        
+    }
+}
