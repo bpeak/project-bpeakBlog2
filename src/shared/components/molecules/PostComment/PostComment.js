@@ -21,6 +21,8 @@ const PostComment = ({
     deleteReply,
 }) => {
 
+    console.log(isUseForm)
+
     return (
         <div className={cx('PostComment', { admin : true })}>
             <div className={cx('comment')}>
@@ -39,7 +41,7 @@ const PostComment = ({
                     <div className={cx('description')}>{comment.description}</div>
                     <div className={cx('btnWrite')}>
                         {isUseForm && comment.replies.length === 0 && <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button> }
-                        {userState.isAdmin && <button onClick={deleteComment} className={cx('delete')}>삭제</button>}
+                        {isUseForm && userState.isAdmin && <button onClick={deleteComment} className={cx('delete')}>삭제</button>}
                     </div>
                 </div>            
             </div>
@@ -94,7 +96,7 @@ const PostReply = ({
                     
                     <div className={cx('btnWrite')}>
                         {isLastReply && <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button>}
-                        {userState.isAdmin && <button className={cx('delete')} onClick={handleOnDeleteClick}>삭제</button> }
+                        {userState.isAdmin && <button onClick={handleOnDeleteClick} className={cx('delete')}>삭제</button>}
                     </div>
                 </div>            
             </div>
