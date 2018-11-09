@@ -276,6 +276,7 @@ class GreetingCanvas extends Component {
 
     componentWillUnmount(){
         if(process.env.isBrowser && this.cancelLoop){
+            console.log('loop canceled')
             this.cancelLoop()
         }
     }
