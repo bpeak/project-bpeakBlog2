@@ -5,6 +5,7 @@ import PostsPageContainer from '~containers/PostsPageContainer'
 
 const PostsPageRoute = (props) => {
     const category = props.match.params.category || 'all'
+    console.log(URLSearchParams, '여기서 에러 생기는건지 함보자구..')
     const keyword = new URLSearchParams(props.location.search).get('keyword') || undefined
     const pageIndex = props.match.params.pageIndex || 1
 
