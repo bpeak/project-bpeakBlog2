@@ -275,7 +275,9 @@ class GreetingCanvas extends Component {
     }
 
     componentWillUnmount(){
-        this.cancelLoop()
+        if(process.env.isBrowser && this.cancelLoop){
+            this.cancelLoop()
+        }
     }
 
     render() {
