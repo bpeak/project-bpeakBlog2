@@ -77,7 +77,7 @@ class PostPage extends React.PureComponent{
                         <div className={cx('intro')}>{post.intro}</div>
                         <div className={cx('description')} dangerouslySetInnerHTML={ {__html: post.description } }></div>
                         <div className={cx('tags')}>
-                        {[...post.tags, ...post.tags,...post.tags, ...post.tags].map((tag, index) => {
+                        {post.tags.map((tag, index) => {
                                 return <button id={tag} onClick={_onBtnTagClick} key={index}>{tag}</button>
                         })}       
                         </div>
