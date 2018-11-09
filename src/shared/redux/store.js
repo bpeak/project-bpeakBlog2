@@ -30,7 +30,8 @@ const preLoadedState = window.__PRELOADED_STATE__
 
 // const preLoadedState = Object.assign({}, preLoadedStateFromServer, preLoadedStateFromLocal)
 
-const store = preLoadedState ? createStore(rootReducer, preLoadedState, applyMiddleware(createLogger())) : createStore(rootReducer, applyMiddleware(createLogger()))
+// const store = preLoadedState ? createStore(rootReducer, preLoadedState, applyMiddleware(createLogger())) : createStore(rootReducer, applyMiddleware(createLogger()))
+const store = preLoadedState ? createStore(rootReducer, preLoadedState) : createStore(rootReducer)
 
 const userStateObserver = (function(prevUserState){
     const updateLocalStorage = (userState) => {
