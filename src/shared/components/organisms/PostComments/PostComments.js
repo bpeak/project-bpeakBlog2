@@ -25,6 +25,8 @@ class PostComments extends Component {
             comments,
             post_id,
             userState,
+            deleteComment,
+            deleteReply,
         } = this.props
         const { currentFocusedComment_id } = this.state
 
@@ -41,6 +43,8 @@ class PostComments extends Component {
                         isFocused={currentFocusedComment_id === comment._id}
                         handleOnBtnReplyClick={ () => this.handleOnBtnReplyClick(comment._id) }
                         comment={comment}
+                        deleteComment={() => { deleteComment(post_id, comment) }}
+                        deleteReply={deleteReply}
                         />
                     )
                 })}
@@ -53,6 +57,8 @@ PostComments.propTypes = {
     post_id : PropTypes.number.isRequired,
     comments : PropTypes.array.isRequired,
     userState : PropTypes.object.isRequired,
+    deleteComment : PropTypes.func.isRequired,
+    deleteReply : PropTypes.func.isRequired,
 }
 
 export default PostComments

@@ -85,6 +85,38 @@ class PostPageContainer extends Component {
         })
     }
 
+    deleteComment = async (post_id, comment) => {
+        const { userState } = this.props
+        const confirmed = confirm(`post(${post_id})의 comment(${comment._id}) : ${comment.description} 댓글과 그 답글을 정말 삭제하시겠습니까?`)
+        if(confirmed === true){
+            const response = await callApi(`/api/admin/posts/${post_id}/comments/${comment._id}`, {
+                method : "DELETE",
+                headers : {
+                    Authorization : `Bearer ${userState.token}`,
+                },
+            })
+            if(response && response.isSuccess){ alert('삭제성공') }
+        } else {
+            alert('취소')
+        }
+    }
+
+    deleteReply = async (reply) => {
+        const { userState } = this.props
+        const confirmed = confirm(`comment(${reply.comment_id})의 reply(${reply._id}) : ${reply.description} 을 정말 삭제하시겠습니까?)`)
+        if(confirmed === true){
+            const response = await callApi(`/api/admin/posts/post/comments/${reply.comment_id}/replies/${reply._id}`, {
+                method : "DELETE",
+                headers : {
+                    Authorization : `Bearer ${userState.token}`,
+                },
+            })
+            if(response && response.isSuccess){ alert('삭제성공') }
+        } else {
+            alert('취소')
+        }
+    }
+
     _setIsUpdatedView = (isUpdatedView) => { this.setState(() => ({ isUpdatedView }))}
 
     _updatePostView = (post_id) => {
@@ -101,13 +133,13 @@ class PostPageContainer extends Component {
         }
     }
 
-    // componentDidMount(){
-    //     const { post } = this.props
-    //     if(post && !this.state.isUpdatedView){
-    //         this._setIsUpdatedView(true)
-    //         this._updatePostView(post._id)
-    //     }
-    // }
+    componentDidMount(){
+        const { post } = this.props
+        if(post && !this.state.isUpdatedView){
+            this._setIsUpdatedView(true)
+            this._updatePostView(post._id)
+        }
+    }
 
     render() {
         return (
@@ -115,6 +147,8 @@ class PostPageContainer extends Component {
             post={this.props.post}
             userState={this.props.userState}
             deletePost={this.deletePost}
+            deleteComment={this.deleteComment}
+            deleteReply={this.deleteReply}
             />
         )
     }

@@ -42,6 +42,8 @@ class PostPage extends React.PureComponent{
         const { 
             userState,
             post,
+            deleteComment,
+            deleteReply,
         } = this.props
         const {
             _onBtnTagClick,
@@ -84,6 +86,8 @@ class PostPage extends React.PureComponent{
                                 post_id={post._id}
                                 comments={post.comments}
                                 userState={userState}
+                                deleteComment={deleteComment}
+                                deleteReply={deleteReply}
                             />
                         </div>
                     </article>}
@@ -98,6 +102,8 @@ class PostPage extends React.PureComponent{
 PostPage.propTypes = {
     post : PropTypes.object,
     userState : PropTypes.object.isRequired,
+    deleteComment : PropTypes.func.isRequired,
+    deleteReply : PropTypes.func.isRequired,
 }
 
 export default PostPage

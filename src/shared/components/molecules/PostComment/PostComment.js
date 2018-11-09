@@ -17,6 +17,8 @@ const PostComment = ({
     isFocused,
     handleOnBtnReplyClick,
     userState,
+    deleteComment,
+    deleteReply,
 }) => {
 
     return (
@@ -35,11 +37,10 @@ const PostComment = ({
                         <span className={cx('date')}>{dateConverter.getTimeAgoStamp(comment.createdDate)}</span>
                     </div>
                     <div className={cx('description')}>{comment.description}</div>
-                    {isUseForm && comment.replies.length === 0 &&
                     <div className={cx('btnWrite')}>
-                        <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button>
-                        {userState.isAdmin && <button className={cx('delete')}>삭제</button>}
-                    </div>}
+                        {isUseForm && comment.replies.length === 0 && <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button> }
+                        {userState.isAdmin && <button onClick={deleteComment} className={cx('delete')}>삭제</button>}
+                    </div>
                 </div>            
             </div>
             {isUseForm && comment.replies.length !== 0 &&
@@ -51,6 +52,8 @@ const PostComment = ({
                         reply={reply}
                         isLastReply={comment.replies.length - 1=== index}
                         handleOnBtnReplyClick={handleOnBtnReplyClick}
+                        deleteReply={deleteReply}
+                        userState={userState}
                         />
                     )
                 })}
@@ -66,8 +69,13 @@ const PostComment = ({
 const PostReply = ({
     reply,
     isLastReply,
-    handleOnBtnReplyClick
+    handleOnBtnReplyClick,
+    deleteReply,
+    userState,
 }) => {
+
+    const handleOnDeleteClick = () => { deleteReply(reply) }
+
     return (
         <div className={cx('PostComment', 'reply')}>
             <div className={cx('comment')}>
@@ -83,10 +91,11 @@ const PostReply = ({
                         <span className={cx('date')}>{dateConverter.getTimeAgoStamp(reply.createdDate)}</span>
                     </div>
                     <div className={cx('description')}>{reply.description}</div>
-                    {isLastReply &&
+                    
                     <div className={cx('btnWrite')}>
-                        <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button>
-                    </div>}
+                        {isLastReply && <button className={cx('reply')} onClick={handleOnBtnReplyClick}>REPLY</button>}
+                        {userState.isAdmin && <button className={cx('delete')} onClick={handleOnDeleteClick}>삭제</button> }
+                    </div>
                 </div>            
             </div>
         </div>
@@ -104,7 +113,8 @@ PostComment.propTypes = {
     }).isRequired,
     isUseForm : PropTypes.bool.isRequired,
     isFocused : PropTypes.bool,
-    handleOnBtnReplyClick : PropTypes.func
+    handleOnBtnReplyClick : PropTypes.func,
+    deleteReply : PropTypes.func,
 }
 
 PostReply.propTypes = {
@@ -116,7 +126,8 @@ PostReply.propTypes = {
         memberAuthor : PropTypes.object
     }).isRequired,
     isLastReply : PropTypes.bool.isRequired,
-    handleOnBtnReplyClick : PropTypes.func
+    handleOnBtnReplyClick : PropTypes.func,
+    deleteReply : PropTypes.func,
 }
 
 export default PostComment

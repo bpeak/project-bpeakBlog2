@@ -17,6 +17,12 @@ admin.delete('/posts/:postId', postCtrls.deletePost)
 admin.patch( '/posts/:postId', fileToBufferMiddleware.single('coverImgFile'), postCtrls.updatePost)
 admin.post(  '/postImgFile', fileToBufferMiddleware.single('imgFile'), postCtrls.preUploadPostImgFile)
 
+// comments
+admin.delete('/posts/:postId/comments/:commentId', postCtrls.deleteComment)
+
+// replies
+admin.delete('/posts/post/comments/:commentId/replies/:replyId', postCtrls.deleteReply)
+
 // visitorCards
 admin.delete('/visitorCards/:_id', visitorCardCtrls.deleteVisitorCard)
 
