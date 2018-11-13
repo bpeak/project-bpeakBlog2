@@ -70,13 +70,20 @@ class MainTemplate extends React.PureComponent{
     }
     
     render(){
-        const { children, title } = this.props
+        const { 
+            title,
+            metas,
+            children 
+        } = this.props
         const { isTopHeaderVisible, deviceType } = this.state
         const style = mainTemplateStyleMaker(deviceType, isTopHeaderVisible)
 
         return(
             <React.Fragment>
                 <Helmet>
+                    {metas && metas.map((meta, index) => {
+                        return <meta key={index} name={meta.name} content={meta.content}/>
+                    })}
                     <title>{title ? `${title} - Bpeak Blog` : 'BPEAK BLOG'}</title>
                 </Helmet>
                 <div className={cx('MainTemplate')}>
@@ -98,7 +105,8 @@ class MainTemplate extends React.PureComponent{
 
 MainTemplate.propTypes = {
     title : PropTypes.string,
-    children : PropTypes.element.isRequired
+    metas : PropTypes.array,
+    children : PropTypes.element.isRequired,
 }
 
 export default MainTemplate

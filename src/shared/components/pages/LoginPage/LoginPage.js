@@ -21,7 +21,12 @@ const LoginPage = (props) => {
     } = props
 
     return (
-        <MainTemplate title="Login">
+        <MainTemplate title="Login" metas={[
+            {
+                name : "description",
+                content : "Bpeak Blog 로그인",
+            }
+        ]}>
             <div className={cx('LoginPage')}>
                 <h1>Sign in</h1>
                 <form className={cx('LoginForm')}>

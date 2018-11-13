@@ -26,7 +26,12 @@ const ProfilePage = ({
 }) => {
     
     return (
-        <MainTemplate title="Profile">
+        <MainTemplate title="Profile" metas={[
+            {
+                name : "description",
+                content : "Bpeak Blog 회원님의 프로필페이지 입니다."
+            }
+        ]}>
             <div className={cx('ProfilePage')}>
                 <main>
                     <nav>

@@ -119,7 +119,12 @@ class PostsPage extends React.PureComponent{
         } = this.state
 
         return (
-            <MainTemplate title="Post">
+            <MainTemplate title="Posts" metas={[
+                {
+                    name : "description",
+                    content : "Bpeak Blog 에 포스팅된 글"
+                }
+            ]}>
                 <div className={cx('PostsPage')}>
                     {!posts ? <div className={cx('spinner-container')}><LargeSpinner/></div> 
                     :<Fragment>

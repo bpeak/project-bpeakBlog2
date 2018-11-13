@@ -65,7 +65,12 @@ class JoinPage extends Component{
         const { status } = this.props
 
         return (
-            <MainTemplate title="Join">
+            <MainTemplate title="Join" metas={[
+                {
+                    name : "description",
+                    content : "Bpeak Blog 회원가입",
+                }
+            ]}>
                 <div className={cx('JoinPage')}>
                     <h1>Sign up</h1>
                     <form className={cx('JoinForm')}>

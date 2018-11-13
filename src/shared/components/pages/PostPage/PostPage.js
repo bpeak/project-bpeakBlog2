@@ -52,7 +52,12 @@ class PostPage extends React.PureComponent{
         } = this
 
         return (
-            <MainTemplate title={post && post.title}>
+            <MainTemplate title={post && post.title} metas={[
+                {
+                    name : "description",
+                    content : post.intro.substr(0, 319)
+                }
+            ]}>
                 <div className={cx('PostPage')}>
                     {post === undefined ? <div className={cx('spinner-container')}><LargeSpinner/></div>
                     :<Fragment>

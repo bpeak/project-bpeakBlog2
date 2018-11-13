@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 //assets
 import fireImgSrc from '~assets/fire.png'
 import clockImgSrc from '~assets/clock.png'
@@ -28,10 +27,12 @@ const HomePage = ({
 
     return (
         <Fragment>
-            <Helmet>
-                <meta name="description" content="Bpeak 닉네임을 사용하고있는 김기현의 개발, 라이프 블로그."/>
-            </Helmet>
-            <MainTemplate>
+            <MainTemplate metas={[
+                {
+                    name : "description",
+                    content : "Bpeak(김기현)의 개발, 라이프 블로그"
+                }
+            ]}>
                 <div className={cx('HomePage')}>
                     <GreetingBox/>
                     <div className={cx('contents')}>

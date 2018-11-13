@@ -19,7 +19,12 @@ const VisitorsPage = (props) => {
         deleteVisitorCard,
     } = props
     return (
-        <MainTemplate title="Visitors">
+        <MainTemplate title="Visitors" metas={[
+            {
+                name : "description",
+                content : "방명록페이지입니다. 이페이지를 관리자가 좋아합니다:)"
+            }
+        ]}>
             <div className={cx('VisitorsPage')}>
                 {visitorCards === undefined ? <div className={cx('spinner-container')}><LargeSpinner/></div> : 
                 <Fragment>

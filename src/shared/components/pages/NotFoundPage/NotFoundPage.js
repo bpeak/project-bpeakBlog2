@@ -16,7 +16,12 @@ const NotFoundPage = () => {
     const oopsImgSrc = oopsImgSrcs[randomIndex]
 
     return (
-        <MainTemplate title="Not Found">
+        <MainTemplate title="Not Found" metas={[
+            {
+                name : "description",
+                content : "페이지를 찾을수 없습니다. :("
+            }
+        ]}>
             <div 
             style={{
                 backgroundImage : `url(${oopsImgSrc})`,
@@ -24,7 +29,7 @@ const NotFoundPage = () => {
             }}
             className={cx('NotFoundPage')}>
                 <h2>404</h2>
-                <div>페이지를 찾을수 없습니다.</div>
+                <div>페이지를 찾을수 없습니다. :(</div>
             </div>
         </MainTemplate>
     )

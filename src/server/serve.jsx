@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import getPreLoadedState from './getPreLoadedState'
 import serialize from 'serialize-javascript'
 import url from 'url'
+import { Helmet } from 'react-helmet'
 
 const serve = async (req, res) => {
     const deviceType = req.device && req.device.type && req.device.type.toUpperCase() || "DESKTOP"
@@ -22,8 +23,13 @@ const serve = async (req, res) => {
             </StaticRouter>
         </Provider>
     )
+    const helmet = Helmet.renderStatic()
+
     const indexFile = fs.readFileSync(path.join(__dirname, '../../public/index.html'), { encoding : 'utf-8' })
     const rendered = indexFile.replace(
+        '<meta helmet>',
+        `${helmet.title.toString()}${helmet.meta.toString()}`
+    ).replace(
         '<div id="app-root"></div>', 
         `<div id="app-root">${appRenderingResult}</div><script>window.__PRELOADED_STATE__ = ${serialize(store.getState())}</script>`
     )
