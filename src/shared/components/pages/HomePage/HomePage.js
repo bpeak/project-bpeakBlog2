@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 //assets
 import fireImgSrc from '~assets/fire.png'
 import clockImgSrc from '~assets/clock.png'
@@ -26,65 +27,70 @@ const HomePage = ({
 }) => {
 
     return (
-        <MainTemplate>
-            <div className={cx('HomePage')}>
-                <GreetingBox/>
-                <div className={cx('contents')}>
-                    <div className={cx('posts')}>
-                        <div className={cx('post-info')}>
-                            <h3>공지<img src={noticeImgSrc}/></h3>
-                            <Link to="/posts">모든포스트 보기</Link>
-                        </div>
-                        <ul className={cx('noticePosts')}>
-                            {noticePosts && noticePosts.map((post) => (
-                                <li className={cx('title')} key={post._id}><Link to={`/post/${post._id}`}>{post.title}</Link></li>
-                            ))}
-                        </ul>
-                        <div className={cx('post-info')}>
-                            <h3>최근글<img src={clockImgSrc}/></h3>
-                            <Link to="/posts">모든포스트 보기</Link>
-                        </div>
-                        <div className={cx('PostHoriCard-container')}>
-                            {recentPost && <PostHoriCard post={recentPost}/>}
-                        </div>
-                        <div className={cx('post-info')}>
-                            <h3>인기글<img src={fireImgSrc}/></h3>
-                            <Link to="/posts">모든포스트 보기</Link>
-                        </div>
-                        {!popularPosts ? <div className={cx('spinner-container')}><SmallSpinner/></div> :
-                        <Fragment>
-                        {popularPosts.map((post) => (
-                            <div className={cx('PostHoriCard-container')} key={post._id}>
-                                <PostHoriCard post={post}/>
+        <Fragment>
+            <Helmet>
+                <meta name="description" content="Bpeak 닉네임을 사용하고있는 김기현의 개발, 라이프 블로그."/>
+            </Helmet>
+            <MainTemplate>
+                <div className={cx('HomePage')}>
+                    <GreetingBox/>
+                    <div className={cx('contents')}>
+                        <div className={cx('posts')}>
+                            <div className={cx('post-info')}>
+                                <h3>공지<img src={noticeImgSrc}/></h3>
+                                <Link to="/posts">모든포스트 보기</Link>
                             </div>
-                        ))}
+                            <ul className={cx('noticePosts')}>
+                                {noticePosts && noticePosts.map((post) => (
+                                    <li className={cx('title')} key={post._id}><Link to={`/post/${post._id}`}>{post.title}</Link></li>
+                                ))}
+                            </ul>
+                            <div className={cx('post-info')}>
+                                <h3>최근글<img src={clockImgSrc}/></h3>
+                                <Link to="/posts">모든포스트 보기</Link>
+                            </div>
+                            <div className={cx('PostHoriCard-container')}>
+                                {recentPost && <PostHoriCard post={recentPost}/>}
+                            </div>
+                            <div className={cx('post-info')}>
+                                <h3>인기글<img src={fireImgSrc}/></h3>
+                                <Link to="/posts">모든포스트 보기</Link>
+                            </div>
+                            {!popularPosts ? <div className={cx('spinner-container')}><SmallSpinner/></div> :
+                            <Fragment>
+                            {popularPosts.map((post) => (
+                                <div className={cx('PostHoriCard-container')} key={post._id}>
+                                    <PostHoriCard post={post}/>
+                                </div>
+                            ))}
+                            </Fragment>
+                            }
+                        </div>
+                        <div className={cx('comments')}>
+                            <h3>Recent Comments</h3>
+                        {!recentComments ? <div className={cx('spinner-container')}><SmallSpinner/></div>
+                        : <Fragment>
+                            {recentComments.map((comment) => {
+                                return (
+                                    <div 
+                                    className={cx('PostComment-container')}
+                                    onClick={() => {history.push(`/post/${comment.post_id}`)}}
+                                    key={comment._id}>
+                                        <PostComment
+                                        comment={comment}
+                                        isUseForm={false}
+                                        isUseReply={false}
+                                        />
+                                    </div>
+                                )
+                            })}
                         </Fragment>
                         }
+                        </div>                
                     </div>
-                    <div className={cx('comments')}>
-                        <h3>Recent Comments</h3>
-                    {!recentComments ? <div className={cx('spinner-container')}><SmallSpinner/></div>
-                    : <Fragment>
-                        {recentComments.map((comment) => {
-                            return (
-                                <div 
-                                className={cx('PostComment-container')}
-                                onClick={() => {history.push(`/post/${comment.post_id}`)}}
-                                key={comment._id}>
-                                    <PostComment
-                                    comment={comment}
-                                    isUseForm={false}
-                                    isUseReply={false}
-                                    />
-                                </div>
-                            )
-                        })}
-                    </Fragment>
-                    }
-                    </div>                
                 </div>
-            </div>
-        </MainTemplate>
+            </MainTemplate>
+        </Fragment>            
     )
 }
 

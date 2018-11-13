@@ -21,8 +21,6 @@ const PostComment = ({
     deleteReply,
 }) => {
 
-    console.log(isUseForm)
-
     return (
         <div className={cx('PostComment', { admin : true })}>
             <div className={cx('comment')}>
