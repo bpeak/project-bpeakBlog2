@@ -1,0 +1,6 @@
+{
+    "NAME_CHAR_MIN" : 1,
+    "NAME_CHAR_MAX" : 10,
+    "EMAIL_CHAR_MAX" : 255,
+    "MSG_CHAR_MAX" : 1000
+}

@@ -317,12 +317,4 @@ class JoinPageContainer extends Component {
     }
 }
 
-const mapStateToProps = (storeState) => ({
-    storeState : { urlHistory : { toAuthPageFrom : storeState.urlHistory.toAuthPageFrom } }
-})
-const mapDispatchToProps = (dispatch) => ({
-    userActions : { loginSuccess : (payload) => dispatch(userActionCreators.loginSuccess(payload)) },
-    popupsActions : { openPopup : (payload) => dispatch(popupActionCreators.openPopup(payload)) }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(JoinPageContainer)
+export default JoinPageContainer

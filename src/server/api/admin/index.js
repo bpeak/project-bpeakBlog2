@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import * as postCtrls from './postCtrls'
 import * as visitorCardCtrls from './visitorCardCtrls'
+import * as emailCtrls from './emailCtrls'
 import tokenValidationMiddleware from '~middlewares/tokenValidationMiddleware'
 import fileToBufferMiddleware from '~middlewares/fileToBufferMiddleware'
 import adminValidationMiddleware from './adminValidationMiddleware'
@@ -16,6 +17,9 @@ admin.get(   '/posts/:postId', postCtrls.readPost)
 admin.delete('/posts/:postId', postCtrls.deletePost)
 admin.patch( '/posts/:postId', fileToBufferMiddleware.single('coverImgFile'), postCtrls.updatePost)
 admin.post(  '/postImgFile', fileToBufferMiddleware.single('imgFile'), postCtrls.preUploadPostImgFile)
+
+// emails
+admin.get('/emails', emailCtrls.readEmails)
 
 // comments
 admin.delete('/posts/:postId/comments/:commentId', postCtrls.deleteComment)

@@ -58,13 +58,4 @@ class App extends React.Component {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//     userActions : {
-//         readPrevUser : (payload) => { dispatch(userActionCreators.readPrevUser(payload)) }
-//     },
-//     urlHistoryActions : {
-//         readPrevUrlHistory : (payload) => { dispatch(urlHistoryActionCreators.readPrevUrlHsitory(payload)) }
-//     }
-// })
-
 export default App

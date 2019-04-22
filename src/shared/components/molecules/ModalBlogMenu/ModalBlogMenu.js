@@ -18,6 +18,7 @@ const ModalBlogMenu = ({
         <div onClick={close} className={cx('ModalBlogMenu-wrapper', { active : isOpend } )}>
             <nav className={cx('ModalBlogMenu', { active : isOpend })}>
                 <Link to='/'>HOME</Link>
+                <Link to="/aboutme">ABOUT ME</Link>
                 <Link to="/Posts">POSTS</Link>
                 <Link to="/Visitors">VISITORS</Link>
                 {userState.isAdmin && <Link to="/Admin">ADMIN</Link>}

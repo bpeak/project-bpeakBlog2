@@ -1,3 +1,171 @@
 .AboutMePage{
-    
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #191919;
+    .Chatbot-wrapper{
+        z-index: 15;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 33%;
+    }
+    .contents{
+        color: white;
+        width: 60%;
+        .name{
+            margin: 1em 0;
+            font-size: 2em;
+            font-weight: 600;
+        }
+        .intro{
+            word-wrap: break-word;
+            word-break: keep-all;
+            white-space: pre-line;
+            line-height: 2em;
+            margin-bottom: 2em;
+        }
+        .techStack{
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            .title{
+                font-size: 1.5em;
+                font-weight: 600;
+                margin: 1em 0;
+                // text-align: center;
+            }
+            .category{
+                margin-left: 1em;
+                font-size: 1.3em;
+                font-weight: 600;
+                // text-align: center;
+            }
+            ul{
+                margin-left: 1em;
+                padding-left: 1em;
+                li{
+                    margin: 0.5em 0;
+                    list-style-position: inside;
+                }
+            }
+        }
+        .works{
+            .title{
+                font-size: 1.5em;
+                font-weight: 600;
+                margin: 1em 0;
+                // text-align: center;
+            }
+            ul{
+                margin-left: 1em;
+                padding-left: 1em;
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    list-style:none;
+                    margin: 1em 0;
+                    .projectName{
+                        font-size: 1.3em;
+                        font-weight: 600;
+                    }
+                    .details{
+                        font-size: 0.8em;
+                        font-weight: 400;
+                    }
+                    a{
+                        display: inline-block;
+                        width: fit-content;
+                        color: #3575D3;
+                        &:hover{
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .Contact-container{
+        padding: 2em;
+        margin-bottom: 3em;
+    }
+}
+
+@media (max-width : 1280px){
+    .AboutMePage{
+        font-size: 20px;
+        .contents{
+            width: 65%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 20px;
+        width: 70%;
+    }
+}
+
+@media (max-width : 1024px){
+    .AboutMePage{
+        font-size: 19px;
+        .contents{
+            width: 70%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 19px;
+    }
+}
+
+@media (max-width : 960px){
+    .AboutMePage{
+        font-size: 18px;
+        .contents{
+            width: 75%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 18px;
+    }
+}
+
+@media (max-width : 768px){
+    .AboutMePage{
+        font-size: 17px;
+        .contents{
+            width: 80%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 17px;
+        width: 80%;
+    }
+}
+
+@media (max-width : 600px){
+    .AboutMePage{
+        font-size: 16px;
+        .contents{
+            width: 85%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 16px;
+        width: 95%;
+    }
+}
+
+@media (max-width : 480px){
+    .AboutMePage{
+        font-size: 15px;
+        .contents{
+            width: 90%;
+        }
+    }
+    .Chatbot-wrapper{
+        font-size: 15px;
+    }
 }
